@@ -10,3 +10,13 @@ app.use(cors());
 
 // MongoDB connection
 const CONNECTION_URL = 'mongodb+srv://image-viewer-user:LU6wWYvbc68Qxzw@cluster0.itfwp.mongodb.net/Image-Viewer-FS-Project?retryWrites=true&w=majority'
+const PORT = process.env.PORT || 5000;
+mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    })
+}).catch(err => {
+    console.log(`${err} did not connect.`);
+})
+mongoose.set('useFindAndModify', false); // to avoid deprecation warnings
