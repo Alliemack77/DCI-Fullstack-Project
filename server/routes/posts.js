@@ -1,13 +1,12 @@
 import express from 'express';
 const postsRouter = express.Router();
 
-import {getPosts} from '../controller/postsController.js';
+import {getPosts} from '../controllers/postsController.js';
 
 
-postsRouter.get('/', (req, res) => {
-    getPosts(req, res);
+postsRouter.get('/', getPosts);
 
-});
+
 
 
 export default postsRouter;
