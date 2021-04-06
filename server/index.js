@@ -23,6 +23,6 @@ mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: tru
 mongoose.set('useFindAndModify', false); // to avoid deprecation warnings
 
 
-//import routes
+//import middleware routes
 import postsRouter from './routes/posts.js';
 app.use('/posts', postsRouter);
