@@ -10,6 +10,8 @@ class Posts extends Component {
                     POSTS
                 </Typography>
                 <Post />
+                <Post />
+
             </Container>
         );
     }
