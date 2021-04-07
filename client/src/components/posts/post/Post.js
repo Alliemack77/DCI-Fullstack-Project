@@ -1,14 +1,16 @@
 import { Typography } from '@material-ui/core';
-import React, {Component} from 'react';
+import React from 'react';
+import useStyles from './styles';
 
-class Post extends Component {
-    render() {
-        return (
-            <Typography varient='h2' align='center'>
-                A Single Post
-            </Typography>
-        );
-    }
+
+const Post = () => {
+
+    const classes = useStyles();
+    return (
+        <Typography varient='h2' align='center'>
+            A Single Post
+        </Typography>
+    );
 }
 
 export default Post;

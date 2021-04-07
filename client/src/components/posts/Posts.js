@@ -1,20 +1,22 @@
-import React, {Component} from 'react';
-import {Container, Typography} from '@material-ui/core';
+import React from 'react';
+import {Typography} from '@material-ui/core';
 import Post from '../posts/post/Post';
+import useStyles from './styles';
 
-class Posts extends Component {
-    render() {
-        return (
-            <Container>
-                <Typography varient='h1' align='center'>
-                    POSTS
-                </Typography>
-                <Post />
-                <Post />
 
-            </Container>
-        );
-    }
+const Posts = () => {
+
+    const classes = useStyles();
+    return (
+        <>
+            <Typography varient='h1' align='center'>
+                POSTS
+            </Typography>
+            <Post />
+            <Post />
+
+        </>
+    );
 }
 
 export default Posts;
