@@ -1,10 +1,12 @@
 import * as api from '../api';
 
-// actions
+// Action Creators
+// functions that return actions --> takes time, must use async/await
 export const getPosts = () => async (dispatch) => {
 
     try {
-        const {data} = await api.fetchPosts(); //grab posts (data) from teh backend
+        //grab posts (data) from the backend
+        const {data} = await api.fetchPosts(); 
         dispatch({
             type: "FETCH_ALL", 
             payload: data

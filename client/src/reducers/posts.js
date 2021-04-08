@@ -1,3 +1,5 @@
+// reducer is a func that accepts state and action
+// state should always equal something --> posts = []
 export default (posts = [], action) => {
     switch (action.type) {
         case "FETCH_ALL":

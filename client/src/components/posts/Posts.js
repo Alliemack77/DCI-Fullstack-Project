@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector} from 'react-redux'; // to fetch data from global redux store, grants 
 import {Typography} from '@material-ui/core';
 import Post from '../posts/post/Post';
 import useStyles from './styles';
