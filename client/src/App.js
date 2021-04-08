@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux'; //dispatch actions
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
-import Form from './components/form/Form'
-import Posts from './components/posts/Posts'
-import camera from './images/camera.png'
+import Form from './components/form/Form';
+import Posts from './components/posts/Posts';
+import {getPosts} from './actions/posts';
+import camera from './images/camera.png';
 import useStyles from './styles';
 
 
 
 const App = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPosts())
+    }, [dispatch]);
 
     return (
         <Container maxWidth='lg'>
