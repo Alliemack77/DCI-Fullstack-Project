@@ -26,3 +26,4 @@ mongoose.set('useFindAndModify', false); // to avoid deprecation warnings
 //import middleware routes
 import postsRouter from './routes/posts.js';
 app.use('/posts', postsRouter);
+
