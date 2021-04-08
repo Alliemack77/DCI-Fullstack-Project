@@ -4,7 +4,13 @@ import axios from 'axios';
 // specify url 
 const url = "http://localhost:5000/posts";
 
-// function that returns axios get request
+// returns get request
 export const fetchPosts = () => {
-    axios.get(url);
+    return axios.get(url);
 }
+
+// returns post request
+export const createPost = (newPost) => {
+   return axios.post(url, newPost)
+}
+

@@ -1,25 +1,26 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import FileBase from 'react-file-base64';
 import { Container, TextField, Button, Typography, Paper } from '@material-ui/core';
+import {createPost} from '../../actions/posts';
 import useStyles from './styles';
+
 
 const Form = () => {
     
     const classes = useStyles();
-    
+    const dispatch = useDispatch();
     const [postData, setPostData] = useState({
         author: '',
         title: '',
         message: '',
-        tage: '', 
+        tags: '', 
         selectedFile: ''
     })
-    
 
-
-    const handleSubmit = () => {
-
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createPost(postData))
     }
 
     const clear = () => {
@@ -30,7 +31,7 @@ const Form = () => {
 
     return (
         <Container className={classes.root}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={12}>
                 <form className={classes.form} onSubmit={handleSubmit}>
                     <Typography variant="h4">
                         Create a new post
@@ -39,6 +40,7 @@ const Form = () => {
                         label='Author'
                         name='author'
                         variant='outlined'
+                        fullWidth
                         value={postData.author} // value is stored in the state --> inside postdata object
                         onChange={(e) => {setPostData({...postData, author: e.target.value})}} //change the value of the state field, update just one of the objs props using event.target, spread first to keep existing info  
                     />
@@ -47,6 +49,7 @@ const Form = () => {
                         label='Title'
                         name='title'
                         variant='outlined'
+                        fullWidth
                         value={postData.title} 
                         onChange={(e) => {setPostData({...postData, title: e.target.value})}} 
                     />
@@ -55,6 +58,7 @@ const Form = () => {
                         label='Message'
                         name='message'
                         variant='outlined'
+                        fullWidth
                         value={postData.message} 
                         onChange={(e) => {setPostData({...postData, message: e.target.value})}} 
                     />  
@@ -63,6 +67,7 @@ const Form = () => {
                         label='Tags'
                         name='tags'
                         variant='outlined'
+                        fullWidth
                         value={postData.tags} 
                         onChange={(e) => {setPostData({...postData, tags: e.target.value})}} 
                     />    
@@ -77,9 +82,6 @@ const Form = () => {
 
                     <Button className={classes.buttonSubmit} variant='contained' color='primary' type="submit" fullWidth>Submit</Button>
                     <Button variant='contained' color='secondary' onClick={clear} fullWidth>Clear</Button>
-
-
-
                 </form>
 
             </Paper>
