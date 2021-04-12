@@ -4,13 +4,15 @@ import axios from 'axios';
 // specify url 
 const url = "http://localhost:5000/posts";
 
-// returns get request
+
+// get from mongoDB
 export const fetchPosts = () => {
     return axios.get(url);
 }
 
-// returns post request
-export const createPost = (newPost) => {
-   return axios.post(url, newPost)
+
+// post to mongoDB
+export const createPost = (postData) => {
+   return axios.post(url, postData)
 }
 
