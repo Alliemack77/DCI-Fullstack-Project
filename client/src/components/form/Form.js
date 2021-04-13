@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import FileBase from 'react-file-base64';
 import { Container, TextField, Button, Typography, Paper } from '@material-ui/core';
-import {createPost} from '../../actions/posts';
+import {createPost, updatePost} from '../../actions/posts';
 import useStyles from './styles';
 
 
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
     
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -20,7 +20,13 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPost(postData)) // createPost(postData) returns an async function --> 
+
+        if (currentId) {
+            dispatch(updatePost(currentId, postData))
+        } else {
+            dispatch(createPost(postData)) // createPost(postData) returns an async function --> 
+        }
+
     }
 
     const clear = () => {

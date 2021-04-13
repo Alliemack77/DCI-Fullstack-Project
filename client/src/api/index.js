@@ -1,4 +1,4 @@
-//connect backebd with front end using AXIOS
+//connect backend with front end using AXIOS
 import axios from 'axios';
 
 // specify url 
@@ -14,5 +14,11 @@ export const fetchPosts = () => {
 // post to mongoDB
 export const createPost = (postData) => {
    return axios.post(url, postData)
+}
+
+
+// update mongoDB
+export const updatePost = (id, updatedPost) => {
+    return axios.patch(`${url}/${id}`, updatedPost);
 }
 
