@@ -33,7 +33,7 @@ const Form = () => {
         <Container className={classes.root}>
             <Paper className={classes.paper} elevation={12}>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                    <Typography variant="h4">
+                    <Typography variant="h4" align="center">
                         Create a new post
                     </Typography>
                     <TextField 

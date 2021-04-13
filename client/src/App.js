@@ -28,13 +28,13 @@ const App = () => {
 
             <Grow in>
                 <Container>
-                    <Grid container justify='space-between' alignItems='stretch' spacing={3}>
-                        <Grid item xs={12} sm={7}>
-                            <Posts/>
+                    <Grid container justify='space-between' alignItems='stretch' spacing={3} direction='row-reverse' >
+                        <Grid item xs={12} sm={6}>
+                            <Form/>
                         </Grid>
 
-                        <Grid item xs={12} sm={4}>
-                            <Form/>
+                        <Grid item xs={12} sm={6}>
+                            <Posts/>
                         </Grid>
                     </Grid>
                 </Container>
