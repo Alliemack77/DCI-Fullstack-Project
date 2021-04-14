@@ -21,11 +21,11 @@ export const getPosts = () => async (dispatch) => {
 };
 
 
-export const createPost = (postData) => async (dispatch) => { //postData param is from the Form postData --> returns the async function 
+export const createPost = (post) => async (dispatch) => { //postData param is from the Form postData --> returns the async function 
     
     try{
         //send data to mongoDB
-        const {data} = await api.createPost(postData);
+        const {data} = await api.createPost(post);
         console.log("DATA: ", data)
 
         // update redux state

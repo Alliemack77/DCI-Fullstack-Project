@@ -19,7 +19,6 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
     const newPost = req.body;
     const post = new PostModel(newPost);
-    console.log(post);
 
     try {
         await post.save().then(() => {
@@ -37,22 +36,14 @@ export const createPost = async (req, res) => {
 // /posts/id
 export const updatePost = async (req, res) => {
 
-    const {id} = req.params; //same as --> id = req.params.id;
-    const {title, message, author, selectedFile, tags} = req.body;
+    const {id: _id} = req.params; //same as --> id = req.params.id;
+    const post = req.body;
 
-    if(!mongoose.Types.ObjectOId.isvalid(id)) return res.status(404).send(`No post with the id: ${id}`)
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No post with the id: ${_id}`)
 
-    const updatedPost = {
-        title, 
-        message, 
-        author, 
-        selectedFile, 
-        tags, 
-        _id: id
-    }
   
     //find post by id and update
-    await PostModel.findByIdAndUpdate(id, updatedPost, {new: true})
+    const updatedPost = await PostModel.findByIdAndUpdate(_id, {...post, _id}, {new: true})
     
     res.json(updatedPost)
 

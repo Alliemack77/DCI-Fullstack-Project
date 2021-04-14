@@ -8,8 +8,7 @@ import useStyles from './styles';
 
 const Form = ({currentId, setCurrentId}) => {
     
-    const classes = useStyles();
-    const dispatch = useDispatch();
+    
     const [postData, setPostData] = useState({
         author: '',
         title: '',
@@ -17,6 +16,11 @@ const Form = ({currentId, setCurrentId}) => {
         tags: '', 
         selectedFile: ''
     })
+
+    const classes = useStyles();
+
+    const dispatch = useDispatch();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,16 +43,15 @@ const Form = ({currentId, setCurrentId}) => {
         <Container className={classes.root}>
             <Paper className={classes.paper} elevation={12}>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                    <Typography variant="h4" align="center">
-                        Create a new post
-                    </Typography>
+                    <Typography variant="h4" align="center"> Create a new post</Typography>
+
                     <TextField 
                         label='Author'
                         name='author'
                         variant='outlined'
                         fullWidth
                         value={postData.author} // value is stored in the state --> inside postdata object
-                        onChange={(e) => {setPostData({...postData, author: e.target.value})}} //change the value of the state field, update just one of the objs props using event.target, spread first to keep existing info  
+                        onChange={(e) => setPostData({...postData, author: e.target.value})} //change the value of the state field, update just one of the objs props using event.target, spread first to keep existing info  
                     />
 
                     <TextField 
@@ -57,7 +60,7 @@ const Form = ({currentId, setCurrentId}) => {
                         variant='outlined'
                         fullWidth
                         value={postData.title} 
-                        onChange={(e) => {setPostData({...postData, title: e.target.value})}} 
+                        onChange={(e) => setPostData({...postData, title: e.target.value})}
                     />
 
                     <TextField
@@ -66,7 +69,7 @@ const Form = ({currentId, setCurrentId}) => {
                         variant='outlined'
                         fullWidth
                         value={postData.message} 
-                        onChange={(e) => {setPostData({...postData, message: e.target.value})}} 
+                        onChange={(e) => setPostData({...postData, message: e.target.value})} 
                     />  
 
                     <TextField
@@ -75,7 +78,7 @@ const Form = ({currentId, setCurrentId}) => {
                         variant='outlined'
                         fullWidth
                         value={postData.tags} 
-                        onChange={(e) => {setPostData({...postData, tags: e.target.value})}} 
+                        onChange={(e) => setPostData({...postData, tags: e.target.value})}
                     />    
 
                     <div className={classes.fileInput}>

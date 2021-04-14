@@ -9,13 +9,8 @@ const postSchema = new mongoose.Schema({
     likeCount: {
         type: Number, 
         default: 0
-    },
-    createdAt: {
-        type: Date,
-        default: new Date()
-    } 
-
-});
+    }
+}, {timestamps: true});
 
 export const PostModel = mongoose.model('post', postSchema);
 

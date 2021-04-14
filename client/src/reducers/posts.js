@@ -1,6 +1,4 @@
-// reducer is a func that accepts state and action
-// state should always equal something --> posts = []
-export default (posts = [], action) => {
+const postsReducer = (posts = [], action) => {
     switch (action.type) {
         case "FETCH_ALL":
             return action.payload;
@@ -8,7 +6,15 @@ export default (posts = [], action) => {
         case "CREATE":
             return [...posts, action.payload];
 
+        case "UPDATE":
+            return posts.map((post) => post._id === action.payload._id ? action.payload : post);
+
         default:
             return posts;
     }
 }
+
+// reducer is a func that accepts state and action
+// state should always equal something --> posts = []
+
+export default postsReducer;
