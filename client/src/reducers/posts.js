@@ -9,6 +9,9 @@ const postsReducer = (posts = [], action) => {
         case "UPDATE":
             return posts.map((post) => post._id === action.payload._id ? action.payload : post);
 
+        case "DELETE":
+            return posts.filter((post) => (action.payload._id !== post._id )) // filter out posts that do not match the payload._id and return them
+
         default:
             return posts;
     }
