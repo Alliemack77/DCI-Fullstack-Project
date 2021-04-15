@@ -1,4 +1,5 @@
 import * as api from '../api';
+import { CREATE, UPDATE, UPDATE_LIKES, FETCH_ALL, DELETE } from '../constants/actionTypes';
 
 // Action Creators
 // functions that return actions --> takes time, must use async/await
@@ -11,7 +12,7 @@ export const getPosts = () => async (dispatch) => {
 
         // update redux state
         dispatch({
-            type: "FETCH_ALL", 
+            type: FETCH_ALL, 
             payload: data
         });
 
@@ -30,7 +31,7 @@ export const createPost = (post) => async (dispatch) => { //postData param is fr
 
         // update redux state
         dispatch({
-            type: "CREATE", 
+            type: CREATE, 
             payload: data
         });
         
@@ -45,7 +46,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     try {
         const {data} = await api.updatePost(id, post);
         dispatch({
-            type: "UPDATE",
+            type: UPDATE,
             payload: data
         });
 
@@ -60,7 +61,7 @@ export const deletePost = (id) => async (dispatch) => {
         await api.deletePost(id);
         console.log('deleting')
         dispatch({
-            type: "DELETE",
+            type: DELETE,
             payload: id // only id
         })
     } catch (error) {
@@ -74,7 +75,7 @@ export const updateLikes = (id) => async (dispatch) => {
         const {data} = await api.updateLikes(id); // post
         console.log("Thi si the data: ", data);
         dispatch({
-            type: "UPDATE_LIKES",
+            type: UPDATE_LIKES,
             payload: data
         })
     }catch (error) {
