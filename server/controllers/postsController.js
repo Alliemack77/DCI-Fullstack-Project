@@ -43,7 +43,7 @@ export const updatePost = async (req, res) => {
 
   
     //find post by id and update
-    const updatedPost = await PostModel.findByIdAndUpdate(_id, {...post, _id}, {new: true})
+    const updatedPost = await PostModel.findByIdAndUpdate(_id, {...post, _id}, {new: true}) //returns updated post
     
     res.json(updatedPost)
 
@@ -55,7 +55,7 @@ export const updatePost = async (req, res) => {
 export const deletePost = async (req, res) => {
 
     const {id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with the id: ${id}`)
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with the id: ${id}`);
 
     try {
         await PostModel.findOneAndDelete(id, (err) => {
@@ -69,5 +69,28 @@ export const deletePost = async (req, res) => {
     }catch (err) {
         console.log(error.message)
     }
+
+}
+
+export const updateLikes = async (req, res) => {
+
+    const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with the id: ${id}`);
+
+    try{
+        const counter = {$inc: {likeCount: 1}};
+        await PostModel.findByIdAndUpdate(id, counter, {new: true}, (err, doc) => {
+            if (err) {
+                res.json(err);
+            }else {
+                console.log("likes increased")
+                res.json(doc) // send post back to action
+            }
+        })
+    }catch (error) {
+        console.log(error.message);
+    }
+
 
 }

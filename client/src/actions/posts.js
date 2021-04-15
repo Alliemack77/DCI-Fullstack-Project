@@ -68,3 +68,17 @@ export const deletePost = (id) => async (dispatch) => {
     }
     
 }
+
+export const updateLikes = (id) => async (dispatch) => {
+    try {
+        const {data} = await api.updateLikes(id); // post
+        console.log("Thi si the data: ", data);
+        dispatch({
+            type: "UPDATE_LIKES",
+            payload: data
+        })
+    }catch (error) {
+        console.log(error.message);
+
+    }
+}

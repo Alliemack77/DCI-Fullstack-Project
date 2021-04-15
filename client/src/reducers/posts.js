@@ -7,6 +7,7 @@ const postsReducer = (posts = [], action) => {
             return [...posts, action.payload];
 
         case "UPDATE":
+        case "UPDATE_LIKES":
             return posts.map((post) => post._id === action.payload._id ? action.payload : post);
 
         case "DELETE":
@@ -15,6 +16,8 @@ const postsReducer = (posts = [], action) => {
             return posts;
     }
 }
+
+
 
 // reducer is a func that accepts state and action
 // state should always equal something --> posts = []

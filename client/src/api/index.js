@@ -13,7 +13,7 @@ export const fetchPosts = () => {
 
 // post to mongoDB
 export const createPost = (postData) => {
-   return axios.post(url, postData)
+   return axios.post(url, postData);
 }
 
 
@@ -25,5 +25,11 @@ export const updatePost = (id, updatedPost) => {
 
 // delete post
 export const deletePost = (id) => {
-    return axios.delete(`${url}/${id}`)
+    return axios.delete(`${url}/${id}`);
+}
+
+
+// updateLikes
+export const updateLikes = (id) => {
+    return axios.put(`${url}/${id}`);
 }

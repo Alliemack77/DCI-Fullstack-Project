@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux'; // dispatch actions
-import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import Form from './components/form/Form';
 import Posts from './components/posts/Posts';
 import {getPosts} from './actions/posts';
