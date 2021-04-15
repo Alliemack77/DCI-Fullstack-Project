@@ -51,6 +51,7 @@ export const updatePost = async (req, res) => {
 } 
 
 // /posts/id
+// 
 export const deletePost = async (req, res) => {
 
     const {id} = req.params;
@@ -62,7 +63,7 @@ export const deletePost = async (req, res) => {
                 res.json(err)
             }else {
                 console.log("Post deleted")
-                res.send({message: "success"});
+                res.json('Post deleted successfully');
             }
         })
     }catch (err) {
