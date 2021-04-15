@@ -29,3 +29,8 @@ mongoose.set('useFindAndModify', false); // to avoid deprecation warnings
 import postsRouter from './routes/posts.js';
 app.use('/posts', postsRouter);
 
+// lets us know backend is deployed to heroku successfully
+app.get('/', (req, res) => {
+    res.send("Hello Herokuis connected")
+})
+
