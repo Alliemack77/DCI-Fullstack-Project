@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // specify url 
-const url = "http://localhost:5000/posts";
+const url = "https://dci-imageboard.herokuapp.com/posts";
 
 
 // get from mongoDB
